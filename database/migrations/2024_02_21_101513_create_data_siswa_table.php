@@ -22,9 +22,9 @@ return new class extends Migration
             $table->bigInteger('no_telp');
             $table->bigInteger('nisn');
             $table->string('kelas');
-            $table->bigInteger('predikat');
-            $table->bigInteger('predikat_sikap');
-            $table->enum('kehadiran', ['hadir','izin','sakit','alpa']);
+            $table->bigInteger('predikat')->nullable();
+            $table->bigInteger('predikat_sikap')->nullable();
+            $table->enum('kehadiran', ['hadir','izin','sakit','alpa'])->default('alpa');
             $table->timestamps();
         });
     }
