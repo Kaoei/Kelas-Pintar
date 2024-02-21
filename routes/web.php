@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ChatController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('test');
-});
+Route::get('/chat', [ChatController::class, 'index'])->name('chat');
+Route::get('/chat/create', [ChatController::class, 'create'])->name('createChat');
+Route::post('/chat', [ChatController::class, 'action'])->name('actionChat');
+Route::get('/chat/detail/{detail}', [ChatController::class, 'detail'])->name('detailChat');
