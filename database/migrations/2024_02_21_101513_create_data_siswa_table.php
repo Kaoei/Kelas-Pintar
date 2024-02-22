@@ -25,6 +25,7 @@ return new class extends Migration
             $table->bigInteger('predikat')->nullable();
             $table->bigInteger('predikat_sikap')->nullable();
             $table->enum('kehadiran', ['hadir','izin','sakit','alpa'])->default('alpa');
+            $table->text('foto')->nullable();
             $table->timestamps();
         });
     }

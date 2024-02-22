@@ -24,5 +24,6 @@ class Siswa extends Model
         'predikat',
         'predikat_sikap',
         'kehadiran',
+        'foto',
     ];
 }

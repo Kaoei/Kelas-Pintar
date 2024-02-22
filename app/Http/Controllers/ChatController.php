@@ -10,8 +10,11 @@ use App\Models\Message;
 class ChatController extends Controller
 {
     public function index() {
+        $data['page'] = 'Beranda';
         $data['result'] = Chat::all();
-        return view('chat.chat', $data);
+        return view('templates.header', $data)
+            . view('chat.chat', $data)
+            . view('templates.footer');
     }
 
     public function create() {

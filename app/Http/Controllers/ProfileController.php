@@ -10,10 +10,20 @@ class ProfileController extends Controller
 {
     public function index() {
         $data['result'] = User::all();
+        $data['data'] = Siswa::all();
         return view('profile.index', $data);
     }
 
     public function action(Request $request) {
+        $request->validate([
+            'foto' => 'required|image|max:4096',
+        ]);
+
+        if($request->hasFile('foto')) {
+            $filename = $request->foto->getClientOriginalName();
+            $path = $request->file('foto')->storeAs('public/foto', $filename);
+        }
+
         $data = [
             'nama' => $request->nama,
             'umur' => $request->umur,
@@ -24,6 +34,7 @@ class ProfileController extends Controller
             'no_telp' => $request->no_telp,
             'nisn' => $request->nisn,
             'kelas' => $request->kelas,
+            'foto' => $filename,
         ];
         $newUser = Siswa::create($data);
         return redirect()->route('profile');
