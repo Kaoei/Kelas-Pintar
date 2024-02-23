@@ -2,5 +2,9 @@
 <hr>
 <p align="left">Features Added :</p>
 <ul>
-    <li></li>
+    <li>DASHBOARD</li>
+    <li>ADD ASSIGNMENT</li>
+    <li>ADD CLASS</li>
+    <li>subject</li>
+    <li>Login Register</li>
 </ul>
