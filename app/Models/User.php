@@ -18,11 +18,15 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
-        'email',
-        'password',
+        'nama',
+        'umur',
+        'role',
+        'password'
     ];
 
+    public function kelas(){
+        return $this->belongsToMany(kelas::class);
+    }
     /**
      * The attributes that should be hidden for serialization.
      *
