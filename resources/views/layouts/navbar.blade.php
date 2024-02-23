@@ -1,4 +1,4 @@
-<div class="navBar md:w-[35vh] w-screen h-[3rem] md:h-[100vh] bg-[#4747F3] flex items-center flex-row md:flex-col  md:justify-center md:fixed  gap-5 md:p-5 p-2">
+<div class="navBar md:w-[35vh] w-screen h-[3rem] md:h-[100vh] bg-[#4747F3] flex items-center flex-row md:flex-col  md:justify-start md:fixed  gap-5 md:p-5 p-2">
 
     <div class="burgerMenu md:hidden flex  gap-3 md:flex-col-reverse items-center" id="burgerMenu">
         <div class="icon text-2xl md:text-3xl text-white">
