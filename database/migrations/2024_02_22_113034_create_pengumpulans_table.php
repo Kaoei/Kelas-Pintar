@@ -11,15 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('message', function (Blueprint $table) {
+        Schema::create('pengumpulans', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('forum_id'); // Ensure it's unsigned for foreign key
-            $table->string('nama');
-            $table->text('message');
+            $table->foreignId('user_id')->constrained();
+            $table->foreignId('tugas_id')->constrained();
+            $table->string('file');
+            $table->dateTime('tgl_pengumpulan');
+            $table->string('status_pengumpulan');
+            $table->string('status_nilai');
             $table->timestamps();
-
-            // Define the foreign key constraint
-            $table->foreign('forum_id')->references('id')->on('forums')->onDelete('cascade');
         });
     }
 
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('message');
+        Schema::dropIfExists('pengumpulans');
     }
 };
