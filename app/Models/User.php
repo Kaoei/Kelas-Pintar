@@ -17,16 +17,16 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
-    protected $table = 'tb_user';
-    protected $primaryKey = 'id_user';
     protected $fillable = [
         'nama',
         'umur',
-        'murid',
-        'foto',
-        'password',
+        'role',
+        'password'
     ];
 
+    public function kelas(){
+        return $this->belongsToMany(kelas::class);
+    }
     /**
      * The attributes that should be hidden for serialization.
      *
