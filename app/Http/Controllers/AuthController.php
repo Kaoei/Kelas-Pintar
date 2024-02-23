@@ -40,7 +40,7 @@ class AuthController extends Controller
         ];
         if(Auth::attempt($data)){ 
             $request->session()->regenerate();
-            return redirect()->intended('/');
+            return redirect()->intended('/murid');
         }
         return back()->with('ERROR' , "LOGIN GAGAL");
     }

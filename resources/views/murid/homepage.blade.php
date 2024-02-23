@@ -25,7 +25,7 @@
 
             <div
                 class="banner md:w-[63rem] w-[23.5rem]  md:h-[10rem] p-5 flex justify-end flex-col bg-[#4747F3] rounded-md">
-                <h1 class="text-white font-bold md:text-4xl text-xl">Selamat Datang,</h1>
+                <h1 class="text-white font-bold md:text-4xl text-xl">Selamat Datang, {{ auth()->user()->nama }}</h1>
                 <h1 class="text-white font-medium md:text-xl text-xs">Lakukan yang terbaik di semua kesempatan yang kamu
                     miliki.</h1>
             </div>
@@ -51,18 +51,18 @@
                 <div class="card-group flex ">
 
                     <div class="grid grid-cols-3 md:grid-cols-5 gap-6">
-
+                        @foreach ($kelass as $kelas)
                         <div class="card bg-[#F5F5F5] w-28 md:w-44">
                             <div class="card-img">
                                 <img src=" {{ asset('img/mtk.jpg') }} " alt="">
                             </div>
                             <div class="card-body flex flex-col px-1.5 md:px-3 py-2 gap-2">
                                 <div class="">
-                                    <h1 class="font-bold text-xs md:text-md">Matematika</h1>
-                                    <h1 class="font-medium text-[9px] md:text-xs">Pak Abdoel</h1>
+                                    <h1 class="font-bold text-xs md:text-md">{{ $kelas->nama_kelas }}</h1>
+                                    <h1 class="font-medium text-[9px] md:text-xs">{{ auth()->user()->role === 'guru' ? $kelas->kelas  : $kelas->user->nama }}</h1>
                                 </div>
                                 <h1 class="font-medium text-[8px] md:text-sm"><span><i
-                                            class="fa-solid fa-clock"></i></span> Jam 08.00 - 09.00</h1>
+                                            class="fa-solid fa-clock"></i></span> Jam {{ $kelas->mulai_pembelajaran }} - {{ $kelas->berakhir }}</h1>
                                 <form action="" class="flex justify-center mt-2">
                                     <button
                                         class="bg-[#4747F3] text-white font-medium text-[9px] md:text-sm items-center justify-center p-1 md:p-1.5 flex gap-3 rounded-sm w-32">
@@ -70,102 +70,7 @@
                                 </form>
                             </div>
                         </div>
-
-                        <div class="card bg-[#F5F5F5] w-28 md:w-44">
-                            <div class="card-img">
-                                <img src=" {{ asset('img/mtk.jpg') }} " alt="">
-                            </div>
-                            <div class="card-body flex flex-col px-1.5 md:px-3 py-2 gap-2">
-                                <div class="">
-                                    <h1 class="font-bold text-xs md:text-md">Matematika</h1>
-                                    <h1 class="font-medium text-[9px] md:text-xs">Pak Abdoel</h1>
-                                </div>
-                                <h1 class="font-medium text-[8px] md:text-sm"><span><i
-                                            class="fa-solid fa-clock"></i></span> Jam 08.00 - 09.00</h1>
-                                <form action="" class="flex justify-center mt-2">
-                                    <button
-                                        class="bg-[#4747F3] text-white font-medium text-[9px] md:text-sm items-center justify-center p-1 md:p-1.5 flex gap-3 rounded-sm w-32">
-                                        Masuk</button>
-                                </form>
-                            </div>
-                        </div>
-
-                        <div class="card bg-[#F5F5F5] w-28 md:w-44">
-                            <div class="card-img">
-                                <img src=" {{ asset('img/mtk.jpg') }} " alt="">
-                            </div>
-                            <div class="card-body flex flex-col px-1.5 md:px-3 py-2 gap-2">
-                                <div class="">
-                                    <h1 class="font-bold text-xs md:text-md">Matematika</h1>
-                                    <h1 class="font-medium text-[9px] md:text-xs">Pak Abdoel</h1>
-                                </div>
-                                <h1 class="font-medium text-[8px] md:text-sm"><span><i
-                                            class="fa-solid fa-clock"></i></span> Jam 08.00 - 09.00</h1>
-                                <form action="" class="flex justify-center mt-2">
-                                    <button
-                                        class="bg-[#4747F3] text-white font-medium text-[9px] md:text-sm items-center justify-center p-1 md:p-1.5 flex gap-3 rounded-sm w-32">
-                                        Masuk</button>
-                                </form>
-                            </div>
-                        </div>
-
-                        <div class="card bg-[#F5F5F5] w-28 md:w-44">
-                            <div class="card-img">
-                                <img src=" {{ asset('img/mtk.jpg') }} " alt="">
-                            </div>
-                            <div class="card-body flex flex-col px-1.5 md:px-3 py-2 gap-2">
-                                <div class="">
-                                    <h1 class="font-bold text-xs md:text-md">Matematika</h1>
-                                    <h1 class="font-medium text-[9px] md:text-xs">Pak Abdoel</h1>
-                                </div>
-                                <h1 class="font-medium text-[8px] md:text-sm"><span><i
-                                            class="fa-solid fa-clock"></i></span> Jam 08.00 - 09.00</h1>
-                                <form action="" class="flex justify-center mt-2">
-                                    <button
-                                        class="bg-[#4747F3] text-white font-medium text-[9px] md:text-sm items-center justify-center p-1 md:p-1.5 flex gap-3 rounded-sm w-32">
-                                        Masuk</button>
-                                </form>
-                            </div>
-                        </div>
-
-                        <div class="card bg-[#F5F5F5] w-28 md:w-44">
-                            <div class="card-img">
-                                <img src=" {{ asset('img/mtk.jpg') }} " alt="">
-                            </div>
-                            <div class="card-body flex flex-col px-1.5 md:px-3 py-2 gap-2">
-                                <div class="">
-                                    <h1 class="font-bold text-xs md:text-md">Matematika</h1>
-                                    <h1 class="font-medium text-[9px] md:text-xs">Pak Abdoel</h1>
-                                </div>
-                                <h1 class="font-medium text-[8px] md:text-sm"><span><i
-                                            class="fa-solid fa-clock"></i></span> Jam 08.00 - 09.00</h1>
-                                <form action="" class="flex justify-center mt-2">
-                                    <button
-                                        class="bg-[#4747F3] text-white font-medium text-[9px] md:text-sm items-center justify-center p-1 md:p-1.5 flex gap-3 rounded-sm w-32">
-                                        Masuk</button>
-                                </form>
-                            </div>
-                        </div>
-
-                        <div class="card bg-[#F5F5F5] w-28 md:w-44">
-                            <div class="card-img">
-                                <img src=" {{ asset('img/mtk.jpg') }} " alt="">
-                            </div>
-                            <div class="card-body flex flex-col px-1.5 md:px-3 py-2 gap-2">
-                                <div class="">
-                                    <h1 class="font-bold text-xs md:text-md">Matematika</h1>
-                                    <h1 class="font-medium text-[9px] md:text-xs">Pak Abdoel</h1>
-                                </div>
-                                <h1 class="font-medium text-[8px] md:text-sm"><span><i
-                                            class="fa-solid fa-clock"></i></span> Jam 08.00 - 09.00</h1>
-                                <form action="" class="flex justify-center mt-2">
-                                    <button
-                                        class="bg-[#4747F3] text-white font-medium text-[9px] md:text-sm items-center justify-center p-1 md:p-1.5 flex gap-3 rounded-sm w-32">
-                                        Masuk</button>
-                                </form>
-                            </div>
-                        </div>
-
+                        @endforeach
 
                     </div>
 

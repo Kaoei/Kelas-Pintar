@@ -6,9 +6,15 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 
-    @vite('resources/css/app.css');
+    @vite('resources/css/app.css')
 </head>
 <body>
-    helo
+    <h1>login</h1>
+    <form action="/login" method="POST">
+        @csrf
+        <input type="text" name="nama">
+        <input type="text" name="password">
+        <button type="submit">kirim</button>
+    </form>
 </body>
 </html>
