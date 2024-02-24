@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('data_siswa', function (Blueprint $table) {
             $table->id('id_siswa');
+            $table->foreignId('user_id')->constrained();
             $table->string('nama');
             $table->bigInteger('umur');
             $table->enum('jenis_kelamin', ['laki-laki','perempuan']);
@@ -25,7 +26,6 @@ return new class extends Migration
             $table->bigInteger('predikat')->nullable();
             $table->bigInteger('predikat_sikap')->nullable();
             $table->enum('kehadiran', ['hadir','izin','sakit','alpa'])->default('alpa');
-            $table->text('foto')->nullable();
             $table->timestamps();
         });
     }
@@ -35,6 +35,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('data_siswa');
+        Schema::dropIfExists('data_siswas');
     }
 };
