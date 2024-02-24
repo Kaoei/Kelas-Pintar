@@ -24,6 +24,10 @@
                         <label for="username" class="font-medium font-poppins">Username :</label>
                         <input type="text" name="nama" id="username" placeholder="Username" class="w-[22rem] py-2 px-2 rounded-lg">
                     </div>
+                    <div class="kelas flex-col flex mb-3 gap-2">
+                        <label for="kelas" class="font-medium font-poppins">kelas :</label>
+                        <input type="text" name="kelas" id="kelas" placeholder="kelas" class="w-[22rem] py-2 px-2 rounded-lg">
+                    </div>
                     <div class="umur flex-col flex mb-3 gap-2">
                         <label for="Umur" class="font-medium font-poppins">Umur :</label>
                         <input type="text" name="umur" id="Umur" placeholder="Umur" class="w-[22rem] py-2 px-2 rounded-lg">

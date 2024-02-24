@@ -25,6 +25,7 @@ class AuthController extends Controller
     {
         $data = [
             'nama' => $request->nama,
+            'kelas' => $request->kelas,
             'umur' => $request->umur,
             'role' => $request->role,
             'password' => $request->password

@@ -22,12 +22,21 @@ class DumyUserSeeder extends Seeder
             ],
             [
             'nama' => 'Murid 1',
+            'kelas' => 'XI PPLG 1',
             'umur' => '15',
             'role' => 'murid',
             'password' => 'murid1'
             ],
             [
             'nama' => 'Murid 2',
+            'kelas' => 'X PPLG 1',
+            'umur' => '15',
+            'role' => 'murid',
+            'password' => 'murid2'
+            ],
+            [
+            'nama' => 'Murid 3',
+            'kelas' => 'XI PPLG 2',
             'umur' => '15',
             'role' => 'murid',
             'password' => 'murid2'

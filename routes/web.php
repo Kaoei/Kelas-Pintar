@@ -11,6 +11,7 @@ use App\Http\Controllers\tugasController;
 use App\Models\Kelas;
 use App\Models\Tugas;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -45,10 +46,7 @@ Route::middleware(['guest'])->group(function(){
 });
 
 Route::middleware(['auth'])->group(function(){
-    Route::get('/murid', function () {
-        $data['kelass'] = Kelas::all();
-        return view('murid.homepage')->with($data);
-    }); 
+    Route::resource('/murid', KelasController::class);
     Route::get('/forum', function () {
         return view('forum.forumPage');
     });

@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Kelas;
 use App\Models\Tugas;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class KelasController extends Controller
 {
@@ -13,8 +15,16 @@ class KelasController extends Controller
      */
     public function index()
     {
-        $data['kelas'] = Kelas::all();
-        return view('kelas.daftarkelas')->with($data);
+        $userId = Auth::id(); 
+        $user = User::findOrFail($userId);
+        if($user->role === 'murid'){
+        $kelas = Kelas::where('kelas', $user->kelas)->get();
+        }else{
+            $kelas = Kelas::where('user_id', $user->id)->get();
+        }
+        $data['kelas'] = $kelas;
+
+        return view('murid.homepage')->with($data);
     }
 
     /**
