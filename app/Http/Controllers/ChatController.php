@@ -16,19 +16,22 @@ class ChatController extends Controller
             
     }
 
-    public function create() {
-        $data['user'] = User::pluck('nama');
-        return view('chat.create', $data);
-    }
-
-    public function action(Request $request) {
+    public function create(Request $request) {
         $data = [
             'user' => $request->user,
             'forum' => $request->forum,
-            'message' => $request->message,
         ];
         $newChat = Chat::create($data);
-        return redirect()->route('chat');
+        return redirect()->route('forum');
+    }
+
+    public function actionChat(Request $request) {
+        $data = [
+            'user' => $request->user,
+            'forum' => $request->forum,
+        ];
+        $newChat = Chat::create($data);
+        return redirect()->route('forum');
     }
 
     public function detail(Chat $detail) {

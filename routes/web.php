@@ -11,6 +11,7 @@ use App\Http\Controllers\QrController;
 use App\Models\Kelas;
 use App\Models\Tugas;
 use App\Models\User;
+use App\Models\Chat;
 
 /*
 |--------------------------------------------------------------------------
@@ -50,8 +51,10 @@ Route::middleware(['auth'])->group(function(){
         return view('murid.homepage')->with($data);
     }); 
     Route::get('/forum', function () {
-        return view('forum.forumPage');
-    });
+        $data['user'] = auth()->user();
+        $data['result'] = Chat::all();
+        return view('forum.forumPage', $data);
+    })->name('forum');
     Route::post('/logout', [AuthController::class, 'logout']);
     Route::resource('/kelas', KelasController::class);
     Route::resource('/tugas', tugasController::class);
@@ -59,8 +62,8 @@ Route::middleware(['auth'])->group(function(){
     Route::resource('/nilai', nilaiController::class);
 });
 Route::get('/chat', [ChatController::class, 'index'])->name('chat');
-Route::get('/chat/create', [ChatController::class, 'create'])->name('createChat');
-Route::post('/chat', [ChatController::class, 'action'])->name('actionChat');
+Route::post('/chat/create', [ChatController::class, 'create'])->name('createChat');
+Route::post('/chat', [ChatController::class, 'actionChat'])->name('actionChat');
 Route::get('/chat/detail/{detail}', [ChatController::class, 'detail'])->name('detailChat');
 Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
 Route::post('/profile', [ProfileController::class, 'action'])->name('actionProfile');
