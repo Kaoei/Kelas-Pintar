@@ -27,6 +27,9 @@ class User extends Authenticatable
     public function kelas(){
         return $this->belongsToMany(kelas::class);
     }
+    public function chat(){
+        return $this->belongsToMany(Chat::class);
+    }
     /**
      * The attributes that should be hidden for serialization.
      *
