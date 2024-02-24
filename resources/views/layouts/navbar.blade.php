@@ -10,7 +10,9 @@
     </div>
 
     <div class="userProfile md:hidden block ml-auto">
-        <img src="{{ asset('img/user.jpg') }}" class="rounded-full w-8" alt="">
+        <a href="/profile">
+            <img src="{{ asset('img/user.jpg') }}" class="rounded-full w-8" alt="">
+        </a>
     </div>
     
     <div class="largerScreen md:block hidden">

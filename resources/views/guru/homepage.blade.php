@@ -52,7 +52,7 @@
             <div class="pelajaran gap-3 flex flex-col">
 
                 <div class="title">
-                    <h1 class="font-bold md:text-xl">Mata pelajaran hari ini :</h1>
+                    <h1 class="font-bold md:text-xl">Jadwal Mengajar hari ini :</h1>
                 </div>
 
                 <div class="card-group flex ">
@@ -88,7 +88,7 @@
             <div class="pelajaran gap-3 flex flex-col">
 
                 <div class="title">
-                    <h1 class="font-bold md:text-xl">Mata pelajaran besok :</h1>
+                    <h1 class="font-bold md:text-xl">Jadwal mengajar besok :</h1>
                 </div>
 
                 <div class="card-group flex ">

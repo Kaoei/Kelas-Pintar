@@ -17,7 +17,7 @@
 
         <div class="sec1 bg-[#E5E5E5] md:w-[100vh] h-[90vh] md:h-screen flex justify-center items-center">
             <div class="form flex flex-col justify-center items-center gap-5">
-                <h1 class="font-bold text-5xl">Selamat Datang</h1>
+                <h1 class="font-bold text-5xl">Selamat Bergabung !</h1>
                 <form action="/login" method="POST" class="flex flex-col justify-center items-center gap-3">
                     @csrf
                     <div class="username flex-col flex mb-3 gap-2">
