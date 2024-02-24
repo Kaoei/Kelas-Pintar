@@ -7,6 +7,9 @@ use App\Http\Controllers\nilaiController;
 use App\Http\Controllers\pengumpulanController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\tugasController;
+use App\Models\Kelas;
+use App\Models\Tugas;
+use App\Models\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,13 +26,14 @@ Route::get('/', function () {
 });
 
 
-Route::get('/login', function () {
-    return view('login');
-});
+// Route::get('/login', function () {
+//     return view('login');
+// });
 
 
 Route::get('/murid', function () {
-    return view('murid.homepage');
+    $data['kelass'] = Kelas::all();
+    return view('murid.homepage')->with($data);
 });
 
 Route::middleware(['guest'])->group(function(){
