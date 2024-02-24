@@ -1,4 +1,4 @@
-<div class="navBar md:w-[35vh] w-screen h-[3rem] md:h-[100vh] bg-[#4747F3] flex items-center flex-row md:flex-col  md:justify-start md:fixed  gap-5 md:p-5 p-2">
+<div class="navBar md:w-[35vh] w-screen h-[3rem] md:h-[100vh] bg-[#4747F3] flex items-center flex-row md:flex-col  md:justify-start md:fixed gap-5 md:p-5 p-2">
 
     <div class="burgerMenu md:hidden flex  gap-3 md:flex-col-reverse items-center" id="burgerMenu">
         <div class="icon text-2xl md:text-3xl text-white">
@@ -9,8 +9,8 @@
         </div>
     </div>
 
-    <div class="userProfile md:hidden block">
-        <img src="" class="rounded-full w-12" alt="">
+    <div class="userProfile md:hidden block ml-auto">
+        <img src="{{ asset('img/user.jpg') }}" class="rounded-full w-8" alt="">
     </div>
     
     <div class="largerScreen md:block hidden">
@@ -21,15 +21,15 @@
             <ul class="text-white text-center flex flex-col gap-12">
                 <li class="font-bold text-xl flex  items-end  justify-center gap-2">
                     <span class="text-2xl"><i class="fa-solid fa-house"></i></span>
-                    <a href="">BERANDA</a>
+                    <a href="/murid">BERANDA</a>
                 </li>
-                <li class="font-medium">
-                    <img src="" alt="">
-                    <a href="">KELAS</a>
+                <li class="font-medium text-white flex gap-2 justify-center items-center">
+                    <span class="text-xl"><i class="fa-solid fa-chalkboard-user"></i></span>
+                    <a href="">Kelas</a>
                 </li>
-                <li class="font-medium">
-                    <img src="" alt="">
-                    <a href="">KELAS</a>
+                <li class="font-medium text-white flex gap-2 justify-center items-center">
+                    <span class="text-xl"><i class="fa-solid fa-users"></i></span>
+                    <a href="/forum">Forum</a>
                 </li>
                 <li class="font-medium">
                     <img src="" alt="">
@@ -54,11 +54,11 @@
                 </li>
                 <li class="font-medium">
                     <img src="" alt="">
-                    <a href="">KELAS</a>
+                    <a href="">Kelas</a>
                 </li>
                 <li class="font-medium">
                     <img src="" alt="">
-                    <a href="">KELAS</a>
+                    <a href="">Forum</a>
                 </li>
                 <li class="font-medium">
                     <img src="" alt="">
