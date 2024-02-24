@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Chat;
 use App\Models\User;
 use App\Models\Message;
+use Illuminate\Support\Facades\Auth;
 
 class ChatController extends Controller
 {
@@ -23,7 +24,7 @@ class ChatController extends Controller
 
     public function action(Request $request) {
         $data = [
-            'user' => $request->user,
+            'user' => Auth::user(),
             'forum' => $request->forum,
             'message' => $request->message,
         ];

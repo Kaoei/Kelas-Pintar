@@ -57,9 +57,9 @@ Route::middleware(['auth'])->group(function(){
     Route::resource('/pengumpulan', pengumpulanController::class);
     Route::resource('/nilai', nilaiController::class);
 });
-Route::get('/chat', [ChatController::class, 'index'])->name('chat');
-Route::get('/chat/create', [ChatController::class, 'create'])->name('createChat');
-Route::post('/chat', [ChatController::class, 'action'])->name('actionChat');
+// Route::get('/chat', [ChatController::class, 'index'])->name('chat');
+// Route::get('/chat/create', [ChatController::class, 'create'])->name('createChat');
+Route::post('/chat', [ChatController::class, 'action'])->name('actionChat'); // buat post
 Route::get('/chat/detail/{detail}', [ChatController::class, 'detail'])->name('detailChat');
 Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
 Route::post('/profile', [ProfileController::class, 'action'])->name('actionProfile');
