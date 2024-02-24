@@ -9,7 +9,7 @@ class QrController extends Controller
 {
     // digunakan untuk membuat qr code
     public function generate($data) {
-        $url = "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data={$data}";
+        $url = "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://127.0.0.1:8000/qr/validate/{$data}";
         return $url;
     }
 
