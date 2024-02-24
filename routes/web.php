@@ -24,9 +24,7 @@ use App\Models\User;
 Route::get('/', function () {
     return view('home');
 });
-Route::get('/forum', function () {
-    return view('forum.forumPage');
-});
+
 
 
 // Route::get('/login', function () {
@@ -36,10 +34,7 @@ Route::get('/forum', function () {
 
 
 
-Route::get('/murid', function () {
-    $data['kelass'] = Kelas::all();
-    return view('murid.homepage')->with($data);
-});
+
 
 Route::middleware(['guest'])->group(function(){
     Route::resource('/register', AuthController::class);
@@ -49,6 +44,13 @@ Route::middleware(['guest'])->group(function(){
 });
 
 Route::middleware(['auth'])->group(function(){
+    Route::get('/murid', function () {
+        $data['kelass'] = Kelas::all();
+        return view('murid.homepage')->with($data);
+    }); 
+    Route::get('/forum', function () {
+        return view('forum.forumPage');
+    });
     Route::post('/logout', [AuthController::class, 'logout']);
     Route::resource('/kelas', KelasController::class);
     Route::resource('/tugas', tugasController::class);

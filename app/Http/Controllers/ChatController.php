@@ -12,9 +12,8 @@ class ChatController extends Controller
     public function index() {
         $data['page'] = 'Beranda';
         $data['result'] = Chat::all();
-        return view('templates.header', $data)
-            . view('chat.chat', $data)
-            . view('templates.footer');
+        return view('chat.chat', $data);
+            
     }
 
     public function create() {
