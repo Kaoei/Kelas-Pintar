@@ -7,6 +7,7 @@ use App\Http\Controllers\nilaiController;
 use App\Http\Controllers\pengumpulanController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\tugasController;
+use App\Http\Controllers\QrController;
 use App\Models\Kelas;
 use App\Models\Tugas;
 use App\Models\User;
@@ -64,3 +65,8 @@ Route::get('/chat/detail/{detail}', [ChatController::class, 'detail'])->name('de
 Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
 Route::post('/profile', [ProfileController::class, 'action'])->name('actionProfile');
 Route::post('/chat', [ChatController::class, 'message'])->name('message');
+
+// Qr Route
+Route::get('/qr/{data}', [QrController::class, 'generate'])->name('qrGenerate');
+Route::get('/qr/validate/{data}', [QrController::class, 'validateNISN'])->name('qrValidate');
+Route::get('/qr/view/{data}', [QrController::class, 'view'])->name('qrView');
