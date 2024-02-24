@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Registrasi</title>
 
     @vite('resources/css/app.css')
 </head>
@@ -17,12 +17,20 @@
 
         <div class="sec1 bg-[#E5E5E5] md:w-[100vh] h-[90vh] md:h-screen flex justify-center items-center">
             <div class="form flex flex-col justify-center items-center gap-5">
-                <h1 class="font-bold text-5xl">Selamat Bergabung !</h1>
-                <form action="/login" method="POST" class="flex flex-col justify-center items-center gap-3">
+                <h1 class="font-bold text-5xl">Silahkan Registasi !</h1>
+                <form action="/register" method="POST" class="flex flex-col justify-center items-center gap-3">
                     @csrf
                     <div class="username flex-col flex mb-3 gap-2">
                         <label for="username" class="font-medium font-poppins">Username :</label>
-                        <input type="text" name="username" id="username" placeholder="Username" class="w-[22rem] py-2 px-2 rounded-lg">
+                        <input type="text" name="nama" id="username" placeholder="Username" class="w-[22rem] py-2 px-2 rounded-lg">
+                    </div>
+                    <div class="umur flex-col flex mb-3 gap-2">
+                        <label for="Umur" class="font-medium font-poppins">Umur :</label>
+                        <input type="text" name="umur" id="Umur" placeholder="Umur" class="w-[22rem] py-2 px-2 rounded-lg">
+                    </div>
+                    <div class="role flex-col flex mb-3 gap-2">
+                        <label for="Role" class="font-medium font-poppins">Role :</label>
+                        <input type="text" name="role" id="Role" placeholder="role" class="w-[22rem] py-2 px-2 rounded-lg">
                     </div>
                     <div class="password flex flex-col mb-3 gap-2">
                         <label for="password">Password :</label>
@@ -31,7 +39,7 @@
                     <div class="button">
                         <button class="text-white bg-[#4747F3] text-xl p-1.5 w-24 rounded-lg">Login</button>
                     </div>
-                    <a href="" class="text-black">Belum akun? <span class="text-[#4747F3]">klik disini</span></a>
+                    <a href="/login" class="text-black">Sudah punya akun? <span class="text-[#4747F3]">klik disini</span></a>
                 </form>
             </div>
         </div>

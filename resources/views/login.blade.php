@@ -22,7 +22,7 @@
                     @csrf
                     <div class="username flex-col flex mb-3 gap-2">
                         <label for="username" class="font-medium font-poppins">Username :</label>
-                        <input type="text" name="username" id="username" placeholder="Username" class="w-[22rem] py-2 px-2 rounded-lg">
+                        <input type="text" name="nama" id="username" placeholder="Username" class="w-[22rem] py-2 px-2 rounded-lg">
                     </div>
                     <div class="password flex flex-col mb-3 gap-2">
                         <label for="password">Password :</label>
@@ -31,7 +31,7 @@
                     <div class="button">
                         <button class="text-white bg-[#4747F3] text-xl p-1.5 w-24 rounded-lg">Login</button>
                     </div>
-                    <a href="" class="text-black">Belum akun? <span class="text-[#4747F3]">klik disini</span></a>
+                    <a href="/register" class="text-black">Belum punya akun? <span class="text-[#4747F3]">klik disini</span></a>
                 </form>
             </div>
         </div>

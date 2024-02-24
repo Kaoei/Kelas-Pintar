@@ -22,10 +22,10 @@
 
         <div class="container flex flex-col p-5 md:ml-[35vh]">
 
-            <div class="imgProfile flex justify-center flex-col items-center mb-2">
+            <div class="imgProfile flex ju  stify-center flex-col items-center mb-2">
                 <img src="{{ asset('img/user.jpg') }}" class="rounded-full w-24" alt="">
                 <div class="text">
-                    <h1 class="font-bold text-2xl">John Doe</h1>
+                    <h1 class="font-bold text-2xl">{{ auth()->user()->nama }}</h1>
                 </div>
             </div>
 
@@ -33,40 +33,46 @@
                 <div class="text-center mb-3">
                     <h1 class="font-semibold text-xl p-2">Lengkapi Datamu!</h1>
                 </div>
-                <form method="POST" action="" class="flex flex-col justify-center items-center">
-
+                <form method="POST" action="/profile" class="flex flex-col justify-center items-center">
+                    @csrf
                     <div class="form flex md:gap-24 justify-center md:flex-row flex-col">
-                    
+
                         <div class="sec1">
 
                             <div class="mb-3 flex flex-col">
-                                <label for="">Nama lengkap :</label>
-                                <input type="text" name=""
-                                    class="border border-[#ABABAB] rounded-lg py-1 w-80 md:w-96" id="">
+                                <label for="nama">Nama lengkap :</label>
+                                <input type="hidden" name="user_id" value="{{ auth()->user()->id }}" id="">
+                                <input type="text" name="nama"
+                                    class="border border-[#ABABAB] rounded-lg py-1 w-80 md:w-96" id="nama">
                             </div>
                             <div class="mb-3 flex flex-col">
-                                <label for="">Kelas :</label>
-                                <input type="text" name=""
-                                    class="border border-[#ABABAB] rounded-lg py-1 w-80 md:w-96" id="">
+                                <label for="umur">umur :</label>
+                                <input type="text" name="umur"
+                                    class="border border-[#ABABAB] rounded-lg py-1 w-80 md:w-96" id="umur">
                             </div>
+
                             <div class="mb-3 flex flex-col">
-                                <label for="">Nisn :</label>
-                                <input type="text" name=""
-                                    class="border border-[#ABABAB] rounded-lg py-1 w-80 md:w-96" id="">
-                            </div>
-                            <div class="mb-3 flex flex-col">
-                                <label for="">Jenis Kelamin :</label>
-                                <select name="" id=""
+                                <label for="jenis_kelamin">Jenis Kelamin :</label>
+                                <select name="jenis_kelamin" id="jenis_kelamin"
                                     class="border border-[#ABABAB] rounded-lg py-1.5 w-80 md:w-96">
-                                    <option value="">Laki - Laki</option>
-                                    <option value="">Perempuan</option>
+                                    <option value="laki-laki">Laki - Laki</option>
+                                    <option value="perempuan">Perempuan</option>
                                 </select>
                             </div>
+
                             <div class="mb-3 flex flex-col">
-                                <label for="">Nomor Telepon :</label>
-                                <input type="text" name=""
-                                    class="border border-[#ABABAB] rounded-lg py-1 w-80 md:w-96" id="">
+                                <label for="tgl_lahir">Tanggal Lahir :</label>
+                                <input type="date" name="tgl_lahir"
+                                    class="border border-[#ABABAB] rounded-lg py-1 px-2 w-80 md:w-96" id="tgl_lahir">
                             </div>
+
+                            <div class="mb-3 flex flex-col">
+                                <label for="tempat_lahir">Tempat lahir :</label>
+                                <input type="text" name="tempat_lahir"
+                                    class="border border-[#ABABAB] rounded-lg py-1 w-80 md:w-96" id="tempat_lahir">
+                            </div>
+
+
 
                         </div>
 
@@ -74,20 +80,30 @@
                         <div class="sec2">
 
                             <div class="mb-3 flex flex-col">
-                                <label for="">Umur :</label>
-                                <input type="text" name=""
-                                    class="border border-[#ABABAB] rounded-lg py-1 w-80 md:w-96" id="">
+                                <label for="email">Email :</label>
+                                <input type="text" name="email"
+                                    class="border border-[#ABABAB] rounded-lg py-1 w-80 md:w-96" id="email">
                             </div>
+
+
                             <div class="mb-3 flex flex-col">
-                                <label for="">Tanggal Lahir :</label>
-                                <input type="date" name=""
-                                    class="border border-[#ABABAB] rounded-lg py-1 px-2 w-80 md:w-96" id="">
+                                <label for="no_telp">Nomor Telepon :</label>
+                                <input type="text" name="no_telp"
+                                    class="border border-[#ABABAB] rounded-lg py-1 w-80 md:w-96" id="no_telp">
                             </div>
+
                             <div class="mb-3 flex flex-col">
-                                <label for="">Tempat lahir :</label>
-                                <input type="text" name=""
-                                    class="border border-[#ABABAB] rounded-lg py-1 w-80 md:w-96" id="">
+                                <label for="nisn">NISN :</label>
+                                <input type="text" name="nisn"
+                                    class="border border-[#ABABAB] rounded-lg py-1 w-80 md:w-96" id="nisn">
                             </div>
+
+                            <div class="mb-3 flex flex-col">
+                                <label for="kelas">Kelas :</label>
+                                <input type="text" name="kelas"
+                                    class="border border-[#ABABAB] rounded-lg py-1 w-80 md:w-96" id="kelas">
+                            </div>
+
 
                         </div>
                     </div>
@@ -102,7 +118,8 @@
             </div>
 
             <div class="formLogout flex justify-center mt-5">
-                <form action="" class="flex">
+                <form action="/logout" method="POST" class="flex">
+                    @csrf
                     <button class="bg-red-700 text-white py-1.5 w-96">LOG OUT</button>
                 </form>
             </div>

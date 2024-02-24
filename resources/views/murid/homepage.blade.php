@@ -26,10 +26,10 @@
             <div class="banner md:w-[63rem] w-[23.5rem] md:h-[10rem] p-5 flex justify-end flex-col bg-[#4747F3] rounded-md">
                             <div class="container flex items-center justify-start flex-row-reverse gap-5">
                                 <div class="userProfile mb-3 md:block hidden">
-                                    <img src="{{ asset('img/user.jpg') }}" class="rounded-full w-10" alt="">
+                                    <a href="/profile"><img src="{{ asset('img/user.jpg') }}" class="rounded-full w-10" alt=""></a>
                                 </div>
                                 <div class="user text-white md:block  hidden mb-3">
-                                    <p>username</p>
+                                    <p>{{ auth()->user()->nama }}</p>
                                 </div>
                             </div>
                 <h1 class="text-white font-bold md:text-4xl text-xl">Selamat Datang,</h1>
