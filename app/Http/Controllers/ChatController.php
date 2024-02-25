@@ -13,7 +13,6 @@ class ChatController extends Controller
         $data['page'] = 'Beranda';
         $data['result'] = Chat::all();
         return view('chat.chat', $data);
-            
     }
 
     public function create(Request $request) {
@@ -40,12 +39,13 @@ class ChatController extends Controller
         return view('chat.detail', $data);
     }
 
-    public function message(Request $request) {
+    public function actionMessage(Request $request) {
         $data = [
             'id_forum' => $request->id_forum,
             'user' => $request->user,
             'message' => $request->message,
         ];
         $newMessage = Message::create($data);
+        return redirect()->route('forum');
     }
 }

@@ -12,6 +12,7 @@ use App\Models\Kelas;
 use App\Models\Tugas;
 use App\Models\User;
 use App\Models\Chat;
+use App\Models\Message;
 
 /*
 |--------------------------------------------------------------------------
@@ -53,6 +54,7 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/forum', function () {
         $data['user'] = auth()->user();
         $data['result'] = Chat::all();
+        $data['message'] = Message::all()->groupBy('id_forum');
         return view('forum.forumPage', $data);
     })->name('forum');
     Route::post('/logout', [AuthController::class, 'logout']);
@@ -67,7 +69,7 @@ Route::post('/chat', [ChatController::class, 'actionChat'])->name('actionChat');
 Route::get('/chat/detail/{detail}', [ChatController::class, 'detail'])->name('detailChat');
 Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
 Route::post('/profile', [ProfileController::class, 'action'])->name('actionProfile');
-Route::post('/chat', [ChatController::class, 'message'])->name('message');
+Route::post('/forum', [ChatController::class, 'actionMessage'])->name('messageChat');
 
 // Qr Route
 Route::get('/qr/{data}', [QrController::class, 'generate'])->name('qrGenerate');

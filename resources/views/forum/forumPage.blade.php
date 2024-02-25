@@ -116,18 +116,49 @@
                     </div>
                 </div>
                 
+                @if(isset($message[$d->id_chat]))
+                @foreach($message[$d->id_chat] as $m)
+                <div class="replies flex gap-5">
+                    <div class="flex gap-5">
+                        <div class="pp">
+                            <img src="{{ asset('img/user.jpg') }}" class="rounded-full w-8" alt="">
+                        </div>
 
+                        <div class="">
+                            <div class="flex gap-5">
+                                <div class="username">
+                                    <h1>{{$m->user}}</h1>
+                                </div>
+                                <div class="time text-[#ababab]">
+                                    <small>{{$m->created_at}}</small>
+                                </div>
+                            </div>
+                            
+                            <div class="msgContent pt-1">
+                                <p>
+                                    {{$m->message}}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @endforeach
+                @endif
                 <!-- Comments Section -->
                 <div class="comments flex items-center gap-5 p-3">
-                    <div class="usersender">
+                    <div class="usersender flex">
                         <div class="pp">
                             <img src="{{ asset('img/user.jpg') }}" class="rounded-full w-12" alt="">
                         </div>
                     </div>
                     <div class="inputform">
-                        <form action="" class="flex gap-3 items-center">
-                            <input type="text" placeholder="Komentar" class="w-[15rem]  md:w-[55rem] p-2 rounded-xl border-[#ababab] border">
-                            <button class="text-[#4747F3] text-xl absolute right-16">
+                        <form action="{{ route('messageChat') }}" method="post" class="flex gap-3 items-center">
+                            @csrf
+                            @method('POST')
+                            <input type="hidden" name="id_forum" value="{{$d->id_chat}}">
+                            <input type="hidden" name="user" value="{{$user->nama}}">
+                            <input type="text" placeholder="Komentar" class="w-[15rem]  md:w-[55rem] p-2 rounded-xl border-[#ababab] border" name="message">
+                            <button type="submit" class="text-[#4747F3] text-xl absolute right-16">
                                 <i class="fa-solid fa-paper-plane"></i>
                             </button>
                         </form>
