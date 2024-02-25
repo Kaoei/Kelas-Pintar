@@ -25,7 +25,7 @@
                 </li>
                 <li class="font-medium text-white flex gap-2 justify-center items-center">
                     <span class="text-xl"><i class="fa-solid fa-chalkboard-user"></i></span>
-                    <a href="">Kelas</a>
+                    <a href="/murid">Kelas</a>
                 </li>
                 <li class="font-medium text-white flex gap-2 justify-center items-center">
                     <span class="text-xl"><i class="fa-solid fa-users"></i></span>
@@ -71,4 +71,4 @@
             </ul>
         </div>
     </div>
-    </div>
+</div>

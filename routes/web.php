@@ -75,3 +75,8 @@ Route::post('/forum', [ChatController::class, 'actionMessage'])->name('messageCh
 Route::get('/qr/{data}', [QrController::class, 'generate'])->name('qrGenerate');
 Route::get('/qr/validate/{data}', [QrController::class, 'validateNISN'])->name('qrValidate');
 Route::get('/qr/view/{data}', [QrController::class, 'view'])->name('qrView');
+
+// Rapot Route
+Route::get('/rapot', function () {
+    return view('murid.rapot');
+})->name('rapot');
