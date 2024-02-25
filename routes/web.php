@@ -1,6 +1,7 @@
     <?php
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Artisan;
 use App\Http\Controllers\ChatController;
 use App\Http\Controllers\KelasController;
 use App\Http\Controllers\nilaiController;
@@ -13,6 +14,7 @@ use App\Models\Tugas;
 use App\Models\User;
 use App\Models\Chat;
 use App\Models\Message;
+use App\Models\Highlights;
 
 /*
 |--------------------------------------------------------------------------
@@ -52,9 +54,13 @@ Route::middleware(['auth'])->group(function(){
         return view('murid.homepage')->with($data);
     }); 
     Route::get('/forum', function () {
+        // Setiap kali pergi ke forum cek apakah Highlights sudah expired
+        Artisan::call('highlights:cleanup');
+        
         $data['user'] = auth()->user();
         $data['result'] = Chat::all();
         $data['message'] = Message::all()->groupBy('id_forum');
+        $data['highlights'] = Highlights::all();
         return view('forum.forumPage', $data);
     })->name('forum');
     Route::post('/logout', [AuthController::class, 'logout']);

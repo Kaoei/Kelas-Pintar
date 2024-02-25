@@ -26,11 +26,12 @@
                     <i class="fa-solid fa-xmark"></i>
                 </span>
                 <h1 class="text-black font-medium">Pesan Highlight :</h1>
-                <form action="" method="POST" class="flex flex-col justify-center gap-5">
+                <form action="{{ route('highlights') }}" method="POST" class="flex flex-col justify-center gap-5">
                     @csrf
                     @method('POST')
-                    <textarea id="highlight-message" cols="15" rows="5" class="border-2 border-[#ababab rounded-xl]" style="resize: none" placeholder="Max 200 characters"></textarea>
-                    <button id="post-highlight" class="text-white bg-[#4747F3] text-md p-2">POST</button>
+                    <input type="hidden" name="user" value="{{$user->nama}}">
+                    <textarea id="highlight-message" cols="15" rows="5" class="border-2 border-[#ababab rounded-xl]" style="resize: none" placeholder="Max 200 characters" name="text"></textarea>
+                    <button type="submit" id="post-highlight" class="text-white bg-[#4747F3] text-md p-2">POST</button>
                 </form>
             </div>
         </div>
@@ -49,7 +50,7 @@
                     <div class="overflow-hidden">
                         <div class="flex chat-container gap-x-4">
                             <!-- Chat Box -->
-                            @foreach($result as $d)
+                            @foreach($highlights as $d)
                             <div class="chatbox bg-[#F6F6F6] flex flex-col p-5 gap-5 w-72 rounded-xl border border-[#ABABAB]">
                                 <div class="user flex items-center gap-2">
                                     <div class="photoProfile">
@@ -61,7 +62,7 @@
                                 </div>
                                 <div class="msg">
                                     <div class="msgContent text-sm">
-                                        <p>{{$d->forum}}</p>
+                                        <p>{{$d->text}}</p>
                                     </div>
                                 </div>
                             </div>
