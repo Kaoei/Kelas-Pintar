@@ -58,22 +58,6 @@
                             <p>Nilai : 0/100</p>
                         </div>
                         @if (auth()->user()->role === 'murid')
-                        @if ($cek > 0)
-                        <div class="mb-3">
-                            <div class="w-full">
-                                <P class="text-[#4747f3] bg-white border w-full border-[#ABABAB]  font-bold rounded-lg p-2 flex gap-5 items-center">Tugas Telah Dikumpul</P>
-                            </div>
-                        </div>
-                        <form action="/pengumpulan/{{ auth()->user()->id }}" method="POST" enctype="multipart/form-data" class="formsubmit flex flex-col justify-center">
-                            @csrf
-                            <input type="hidden" name="tugas_id" value="{{ $tugas->id }}">
-                            <div class="btn flex justify-center">
-                                    @csrf
-                                    @method('DELETE')
-                                <button class="bg-rose-600 text-white font-medium p-2 rounded-md w-full">Batalkan Pengumpuulan</button>
-                            </div>
-                        </form>
-                        @else
                         <form action="/pengumpulan" method="POST" enctype="multipart/form-data" class="formsubmit flex flex-col justify-center">
                             @csrf
                             <div class="mb-3">
@@ -90,7 +74,30 @@
                                 <button class="bg-white text-[#4747F3] font-medium p-2 rounded-md w-full">Submit</button>
                             </div>
                         </form>
+                        @if ($cek > 0)
+                        <div class="mb-3">
+                            <div class="w-full">
+                                <P class="text-[#4747f3] bg-white border w-full border-[#ABABAB]  font-bold rounded-lg p-2 flex gap-5 items-center">Tugas Telah Dikumpul</P>
+                            </div>
+                        </div>
+                        <form action="/pengumpulan/{{ auth()->user()->id }}" method="POST" enctype="multipart/form-data" class="formsubmit flex flex-col justify-center">
+                            @csrf
+                            <input type="hidden" name="tugas_id" value="{{ $tugas->id }}">
+                            <div class="btn flex justify-center">
+                                    @csrf
+                                    @method('DELETE')
+                                <button class="bg-rose-600 text-white font-medium p-2 rounded-md w-full">Batalkan Pengumpuulan</button>
+                            </div>
+                        </form>
+                        @else
                         @endif
+                        @else
+                        <div class="mb-3">
+                            <div class="w-full text-center">
+                                <a href="/pengumpulan" class="bg-white border w-full border-[#ABABAB]  font-bold rounded-lg p-2 flex gap-5">Lihat Pengumpulan</a>
+
+                            </div>
+                        </div>
                         @endif
                       
                     </div>
