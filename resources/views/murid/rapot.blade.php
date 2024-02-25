@@ -31,7 +31,10 @@
 
                 <div class="row-span-6 flex justify-center">
                     <div>
+                        <div class="flex gap-10">
                         <h1 class="mt-2 font-bold text-base">LAPORAN HASIL BELAJAR SEMESTER</h1>
+                        <button>Download pdf</button>
+                        </div>
                         <table class="w-full mt-4 text-sm text-center border-collapse border border-black">
                             <tr>
                                 <th>No</th>
