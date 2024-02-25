@@ -56,6 +56,9 @@ class AuthController extends Controller
             return redirect('/');
         }
         }
+        public function rapot($id){
+            return view('murid.rapot');
+        }
     /**
      * Show the form for creating a new resource.
      */

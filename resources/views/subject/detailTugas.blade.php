@@ -26,7 +26,7 @@
                 <div class="sec1">
                     <div class="container-judul flex flex-col gap-8 border-b-2 border-[#ABABAB]">
                             <div class="butt">
-                                <a href="">
+                                <a href="/kelas/{{ $tugas->kelas->id }}">
                                     <span class="text-[#4747f3]"><i class="fa-solid fa-chevron-left"></i></span> BACK ?
                                 </a>
                             </div>
@@ -54,14 +54,25 @@
                     <div class="sec2 w-[24rem] md:w-[55rem] absolute bottom-0">
                     <div class="container-formsubmit bg-[#4747F3] rounded-t-2xl p-5">
                         <div class="nilai flex justify-between text-xl font-bold text-white mb-5 px-2">
-                            <p>Status</p>
-                            <p>Dinilai : 90</p>
+                            <p>Pengumpulan</p>
+                            <p>Nilai : 0/100</p>
                         </div>
                         @if (auth()->user()->role === 'murid')
-                        <form action="" method="" class="formsubmit flex flex-col justify-center">
+                        @if ($cek > 0)
+                        <div class="mb-3">
+                            <div class="w-full">
+                                <P class="text-[#4747f3] bg-white border w-full border-[#ABABAB]  font-bold rounded-lg p-2 flex gap-5 items-center">Tugas Telah Dikumpul</P>
+                            </div>
+                        </div>
+                        @else
+                        <form action="/pengumpulan" method="POST" enctype="multipart/form-data" class="formsubmit flex flex-col justify-center">
+                            @csrf
                             <div class="mb-3">
                                 <div class="w-full">
-                                    <input type="file" id="file" name="" class="text-white " style="display: none;">
+                                    <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
+                                    <input type="hidden" name="tugas_id" value="{{ $tugas->id }}">
+                                    <input type="file" id="file" name="file" class="text-white " style="display: none;">
+                                    <input type="hidden" name="status_pengumpulan" value="{{  $time > $tugas->tenggat_waktu ? 'tidak_tepat_waktu' : 'tepat_waktu'}}">
                                     <label for="file" class="text-[#4747f3] bg-white border w-full border-[#ABABAB] cursor-pointer font-bold rounded-xl p-2 flex gap-5 items-center">
                                         <span class="text-xl"><i class="fa-solid fa-arrow-up-from-bracket"></i></span> Upload Tugas</label>
                                 </div>
@@ -71,6 +82,20 @@
                             </div>
                         </form>
                         @endif
+                        @endif
+                        <form action="" method="" enctype="multipart/form-data" class="formsubmit flex flex-col justify-center">
+                            @csrf
+                            <div class="mb-3">
+                                <div class="w-full">
+                                    <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
+                                    <input type="hidden" name="tugas_id" value="{{ $tugas->id }}">
+                                    <input type="hidden" name="status_pengumpulan" value="{{  $time > $tugas->tenggat_waktu ? 'tidak_tepat_waktu' : 'tepat_waktu'}}">
+                                </div>
+                            </div>
+                            <div class="btn flex justify-center">
+                                <button class="bg-rose-600 text-white font-medium p-2 rounded-md w-full">Batalkan Pengumpuulan</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>

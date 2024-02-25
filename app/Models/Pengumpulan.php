@@ -15,4 +15,7 @@ class Pengumpulan extends Model
     public function Tugas(){
         return $this->belongsTo(Tugas::class);
     }
+    public function nilai(){
+        return $this->belongsTo(Nilai::class);
+    }
 }

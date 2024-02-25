@@ -63,8 +63,8 @@ Route::middleware(['auth'])->group(function(){
     Route::resource('/tugas', tugasController::class);
     Route::resource('/pengumpulan', pengumpulanController::class);
     Route::resource('/nilai', nilaiController::class);
-Route::resource('/profile', datasiswaController::class);
-
+    Route::resource('/profile', datasiswaController::class);
+    Route::get('/rapot/{id}', [AuthController::class, 'rapot']);
 });
 // Route::get('/chat', [ChatController::class, 'index'])->name('chat');
 Route::post('/chat/create', [ChatController::class, 'create'])->name('createChat'); // buat post forum

@@ -118,6 +118,10 @@
             </div>
 
             <div class="formLogout flex justify-center mt-5">
+                <div class="flex">
+                <a href="/rapot/{{ auth()->user()->id }}" class="bg-blue-700 rounded-sm text-white text-center py-1.5 w-96 mx-10">Cek raport</a>
+
+                </div>
                 <form action="/logout" method="POST" class="flex">
                     @csrf
                     <button class="bg-red-700 text-white py-1.5 w-96">LOG OUT</button>

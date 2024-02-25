@@ -11,8 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('nilais', function (Blueprint $table) {
+        Schema::create('nilai', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained();
+            $table->foreignId('tugas_id')->constrained();
+            $table->foreignId('pengumpulans_id')->constrained();
+            $table->integer('nilai');
             $table->timestamps();
         });
     }

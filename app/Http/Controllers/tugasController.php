@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Kelas;
+use App\Models\Pengumpulan;
 use App\Models\Tugas;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class tugasController extends Controller
 {
@@ -46,7 +48,9 @@ class tugasController extends Controller
      */
     public function show($id)
     {
+        $user_id = Auth::id();
         $data['tugas'] = Tugas::findOrFail($id); 
+        $data['cek'] = Pengumpulan::where('user_id', $user_id)->count();
         $data['time'] = Carbon::now("Asia/Jakarta")->toDateTimeString();
         return view('subject.detailTugas')->with($data);    
 
