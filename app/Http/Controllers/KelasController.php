@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Kelas;
 use App\Models\Tugas;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -17,13 +18,18 @@ class KelasController extends Controller
     {
         $userId = Auth::id(); 
         $user = User::findOrFail($userId);
+        $mytime = Carbon::now('Asia/Jakarta')->format('l');
+        $mytimeTomorrow = Carbon::now('Asia/Jakarta')->addDay()->format('l');
         if($user->role === 'murid'){
-        $kelas = Kelas::where('kelas', $user->kelas)->get();
+        $kelas = Kelas::where('kelas', $user->kelas)->where('jadwal', $mytime)->get();
+        $Kelasbesok = Kelas::where('kelas', $user->kelas)->where('jadwal', $mytimeTomorrow)->get();
         }else{
-            $kelas = Kelas::where('user_id', $user->id)->get();
+            $kelas = Kelas::where('user_id', $user->id)->where('jadwal', $mytime)->get();
+            $Kelasbesok = Kelas::where('user_id', $user->id)->where('jadwal', $mytimeTomorrow)->get();
+
         }
         $data['kelas'] = $kelas;
-
+        $data['kelasbesok'] =$Kelasbesok;
         return view('murid.homepage')->with($data);
     }
 
