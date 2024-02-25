@@ -70,6 +70,7 @@ Route::get('/chat/detail/{detail}', [ChatController::class, 'detail'])->name('de
 Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
 Route::post('/profile', [ProfileController::class, 'action'])->name('actionProfile');
 Route::post('/forum', [ChatController::class, 'actionMessage'])->name('messageChat');
+Route::post('/forum', [ChatController::class, 'highlights'])->name('highlights');
 
 // Qr Route
 Route::get('/qr/{data}', [QrController::class, 'generate'])->name('qrGenerate');
@@ -80,3 +81,8 @@ Route::get('/qr/view/{data}', [QrController::class, 'view'])->name('qrView');
 Route::get('/rapot', function () {
     return view('murid.rapot');
 })->name('rapot');
+
+// Lihat nilai Guru
+Route::get('/lihatnilai', function () {
+    return view('murid.detail');
+})->name('lihatnilai');

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Chat;
 use App\Models\User;
 use App\Models\Message;
+use App\Models\Highlights;
 
 class ChatController extends Controller
 {
@@ -46,6 +47,15 @@ class ChatController extends Controller
             'message' => $request->message,
         ];
         $newMessage = Message::create($data);
+        return redirect()->route('forum');
+    }
+
+    public function highlights(Request $request) {
+        $data = [
+            'user' => $request->user,
+            'text' => $request->text,
+        ];
+        $newHighlight = Highlights::create($data);
         return redirect()->route('forum');
     }
 }

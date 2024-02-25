@@ -26,7 +26,9 @@
                     <i class="fa-solid fa-xmark"></i>
                 </span>
                 <h1 class="text-black font-medium">Pesan Highlight :</h1>
-                <form action="" class="flex flex-col justify-center gap-5   ">
+                <form action="" method="POST" class="flex flex-col justify-center gap-5">
+                    @csrf
+                    @method('POST')
                     <textarea id="highlight-message" cols="15" rows="5" class="border-2 border-[#ababab rounded-xl]" style="resize: none" placeholder="Max 200 characters"></textarea>
                     <button id="post-highlight" class="text-white bg-[#4747F3] text-md p-2">POST</button>
                 </form>
@@ -152,7 +154,7 @@
                         </div>
                     </div>
                     <div class="inputform">
-                        <form action="{{ route('messageChat') }}" method="post" class="flex gap-3 items-center">
+                        <form action="" method="post" class="flex gap-3 items-center">
                             @csrf
                             @method('POST')
                             <input type="hidden" name="id_forum" value="{{$d->id_chat}}">
