@@ -26,6 +26,9 @@ use Illuminate\Support\Facades\Auth;
 Route::get('/', function () {
     return view('login');
 });
+Route::get('/n', function () {
+    return view('subject.kelas');
+});
 
 
 

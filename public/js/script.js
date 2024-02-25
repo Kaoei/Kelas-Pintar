@@ -47,3 +47,4 @@ document.addEventListener('DOMContentLoaded', function() {
         overlay.classList.add('opacity-0', 'pointer-events-none');
     });
 });
+
