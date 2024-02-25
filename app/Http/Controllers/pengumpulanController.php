@@ -48,7 +48,7 @@ class pengumpulanController extends Controller
             $path = 'DOC-tugas/'.$NewNameFile;
            Storage::disk('public')->put($path, file_get_contents($DOC));
         }
-        // dd($NewNameFile);
+        // dd($NewNameFile);    
         $data = [
             'user_id' => $request->user_id,
             'tugas_id' => $request->tugas_id,
@@ -91,8 +91,12 @@ class pengumpulanController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Pengumpulan $pengumpulan)
+    public function destroy($id)
     {
-        //
+       Pengumpulan::where('user_id', $id)->delete();
+       $tugas = Tugas::findOrFail(Request()->tugas_id);
+        $tugas->status_tugas = 'belum_selesai';
+        $tugas->save();
+       return back();
     }
 }

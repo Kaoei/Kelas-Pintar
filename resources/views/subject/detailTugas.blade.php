@@ -64,6 +64,15 @@
                                 <P class="text-[#4747f3] bg-white border w-full border-[#ABABAB]  font-bold rounded-lg p-2 flex gap-5 items-center">Tugas Telah Dikumpul</P>
                             </div>
                         </div>
+                        <form action="/pengumpulan/{{ auth()->user()->id }}" method="POST" enctype="multipart/form-data" class="formsubmit flex flex-col justify-center">
+                            @csrf
+                            <input type="hidden" name="tugas_id" value="{{ $tugas->id }}">
+                            <div class="btn flex justify-center">
+                                    @csrf
+                                    @method('DELETE')
+                                <button class="bg-rose-600 text-white font-medium p-2 rounded-md w-full">Batalkan Pengumpuulan</button>
+                            </div>
+                        </form>
                         @else
                         <form action="/pengumpulan" method="POST" enctype="multipart/form-data" class="formsubmit flex flex-col justify-center">
                             @csrf
@@ -83,19 +92,7 @@
                         </form>
                         @endif
                         @endif
-                        <form action="" method="" enctype="multipart/form-data" class="formsubmit flex flex-col justify-center">
-                            @csrf
-                            <div class="mb-3">
-                                <div class="w-full">
-                                    <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
-                                    <input type="hidden" name="tugas_id" value="{{ $tugas->id }}">
-                                    <input type="hidden" name="status_pengumpulan" value="{{  $time > $tugas->tenggat_waktu ? 'tidak_tepat_waktu' : 'tepat_waktu'}}">
-                                </div>
-                            </div>
-                            <div class="btn flex justify-center">
-                                <button class="bg-rose-600 text-white font-medium p-2 rounded-md w-full">Batalkan Pengumpuulan</button>
-                            </div>
-                        </form>
+                      
                     </div>
                 </div>
             </div>

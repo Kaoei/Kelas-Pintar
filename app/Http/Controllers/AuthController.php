@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\data_siswa;
 use App\Models\User;
 use Clockwork\Request\Log;
 use Illuminate\Http\Request;
@@ -57,7 +58,9 @@ class AuthController extends Controller
         }
         }
         public function rapot($id){
-            return view('murid.rapot');
+            $data['user'] = data_siswa::where('user_id', $id)->first();
+            // dd($data['user']->nama);
+            return view('murid.rapot')->with($data);
         }
     /**
      * Show the form for creating a new resource.

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\data_siswa;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class datasiswaController extends Controller
 {
@@ -12,7 +13,9 @@ class datasiswaController extends Controller
      */
     public function index()
     {
-        return view('profile.index');
+        $idUser = Auth::user();
+        $data['user'] = data_siswa::where('user_id', $idUser)->count();
+        return view('profile.index')->with($data);
     }
 
     /**

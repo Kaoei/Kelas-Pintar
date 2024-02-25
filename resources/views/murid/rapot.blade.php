@@ -17,13 +17,13 @@
             <div class="h-full w-full bg-white grid grid-rows-10">
                 <div class="row-span-2 flex justify-between items-center border-b-2 mx-1">
                     <div>
-                        <p class="text-sm">Nama Murid: <b>Andre</b></p>
-                        <p class="text-sm">NIS/NISN: <b>12345678</b></p>
+                        <p class="text-sm">Nama Murid: <b>{{ $user->nama }}</b></p>
+                        <p class="text-sm">NIS/NISN: <b>{{ $user->nisn }}</b></p>
                         <p class="text-sm">Nama Sekolah: <b>Cinta Kasih Tzu Chi</b></p>
                         <p class="text-sm">Alamat: <b>Jl.Banamas Raya 12</b></p>
                     </div>
                     <div>
-                        <p class="text-sm">Kelas: <b>XI - 2</b></p>
+                        <p class="text-sm">Kelas: <b>{{ $user->kelas }}</b></p>
                         <p class="text-sm">Semester: <b>2</b></p>
                         <p class="text-sm">Tahun Ajaran: <b>2024/2025</b></p>
                     </div>

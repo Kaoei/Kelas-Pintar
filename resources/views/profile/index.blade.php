@@ -31,8 +31,10 @@
 
             <div class="border-t-2 border-b-2 border-[#ABABAB] p-2">
                 <div class="text-center mb-3">
-                    <h1 class="font-semibold text-xl p-2">Lengkapi Datamu!</h1>
+                    <h1 class="font-semibold text-xl p-2">{{ $user > 0 ? 'Lengkapi Datamu!' : 'Data Sudah Lengkap' }}</h1>
                 </div>
+                @if ($user > 0)
+                    
                 <form method="POST" action="/profile" class="flex flex-col justify-center items-center">
                     @csrf
                     <div class="form flex md:gap-24 justify-center md:flex-row flex-col">
@@ -113,6 +115,7 @@
                     </div>
 
                 </form>
+                @endif
 
 
             </div>
