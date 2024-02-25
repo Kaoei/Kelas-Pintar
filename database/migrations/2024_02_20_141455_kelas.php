@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('nama_kelas');
             $table->string('subJudul');
             $table->string('kelas');
+            $table->enum('jadwal', ['Monday','Tuesday','Wednesday','Thursday','Friday']);
             $table->time('mulai_pembelajaran');
             $table->time('berakhir');
             $table->timestamps();
