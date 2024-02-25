@@ -12,10 +12,10 @@
 
     <div class="md:flex md:justify-end md:w-full">
 
-    <div class="h-[37rem] md:h-[42rem] w-full bg-[#E5E5E5] md:w-5/6">
+    <div class="h-[39rem] w-full bg-[#E5E5E5] md:w-5/6">
         <div class="h-full w-full p-5">
             <div class="h-full w-full bg-white grid grid-rows-10">
-                <div class="row-span-2 flex justify-between items-center border-b-2 mx-1">
+                <div class="row-span-2 flex justify-between md:mx-10 items-center border-b-2 mx-1">
                     <div>
                         <p class="text-sm">Nama Murid: <b>Andre</b></p>
                         <p class="text-sm">NIS/NISN: <b>12345678</b></p>
@@ -30,10 +30,10 @@
                 </div>
 
                 <div class="row-span-6 flex justify-center">
-                    <div>
-                        <div class="flex gap-10">
+                    <div class="relative">
+                        <button class="w-32 p-2 bg-[#4747F3] rounded-md text-white font-poppins absolute ml-64 md:ml-[32rem] mt-1">Convert to pdf</button>
+                        <div class="flex">
                         <h1 class="mt-2 font-bold text-base">LAPORAN HASIL BELAJAR SEMESTER</h1>
-                        <button>Download pdf</button>
                         </div>
                         <table class="w-full mt-4 text-sm text-center border-collapse border border-black">
                             <tr>
