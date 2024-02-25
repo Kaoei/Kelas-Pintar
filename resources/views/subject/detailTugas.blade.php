@@ -32,20 +32,20 @@
                             </div>
                             
                         <div class="subject">
-                            <h1 class="font-bold text-3xl">MATEMATIKA KELAS A</h1>
-                            <p class="font-medium">Nama tugas</p>
+                            <h1 class="font-bold text-3xl">{{ $tugas->Kelas->nama_kelas }}</h1>
+                            <p class="font-medium">{{ $tugas->Kelas->nama_kelas }}</p>
                         </div>
                         <div class="tugas">
-                            <h1 class="font-semibold text-xl">Nama tugas</h1>
+                            <h1 class="font-semibold text-xl">{{ $tugas->nama_tugas }}</h1>
                         </div>
                     </div>
 
-                    <div class="tenggat absolute flex text-[10px] md:text-sm items-center gap-4 md:ml-[53rem] md:-mt-16 -mt-12 ml-[14rem]">
-                        <h1 class="">Tenggat Waktu : 16/06/23</h1>
+                    <div class="tenggat absolute flex text-[10px] md:text-sm items-center gap-4 md:ml-[50rem] md:-mt-16 -mt-12 ml-[14rem]">
+                        <h1 class="">Tenggat Waktu : {{ $tugas->tenggat_waktu }}</h1>
                     </div>
 
                     <div class="container-pesan py-5 text-sm">
-                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fuga officia at, amet nulla sapiente dolores nesciunt dignissimos voluptatum quidem expedita, ut et quod nam hic nemo alias cupiditate numquam doloribus.</p>
+                        <p>{{ $tugas->deskripsi_tugas }}</p>
                     </div>
                 </div>
 
@@ -57,6 +57,7 @@
                             <p>Status</p>
                             <p>Dinilai : 90</p>
                         </div>
+                        @if (auth()->user()->role === 'murid')
                         <form action="" method="" class="formsubmit flex flex-col justify-center">
                             <div class="mb-3">
                                 <div class="w-full">
@@ -69,6 +70,7 @@
                                 <button class="bg-white text-[#4747F3] font-medium p-2 rounded-md w-full">Submit</button>
                             </div>
                         </form>
+                        @endif
                     </div>
                 </div>
             </div>

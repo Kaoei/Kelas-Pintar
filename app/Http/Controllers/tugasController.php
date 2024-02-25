@@ -48,7 +48,7 @@ class tugasController extends Controller
     {
         $data['tugas'] = Tugas::findOrFail($id); 
         $data['time'] = Carbon::now("Asia/Jakarta")->toDateTimeString();
-     return view('kelas.detailtugas')->with($data);  
+        return view('subject.detailTugas')->with($data);    
 
     }
 
