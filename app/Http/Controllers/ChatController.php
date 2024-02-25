@@ -10,33 +10,35 @@ use Illuminate\Support\Facades\Auth;
 
 class ChatController extends Controller
 {
-    public function index() {
-        $data['page'] = 'Beranda';
-        $data['result'] = Chat::all();
-        return view('chat.chat', $data);
+    // public function index() {
+    //     $data['page'] = 'Beranda';
+    //     $data['result'] = Chat::all();
+    //     return view('chat.chat', $data);
             
-    }
+    // }
 
-    public function create() {
-        $data['user'] = User::pluck('nama');
-        return view('chat.create', $data);
-    }
-
-    public function action(Request $request) {
+    public function create(Request $request) {
         $data = [
-            'user' => Auth::user(),
+            'user' => $request->user,
             'forum' => $request->forum,
-            'message' => $request->message,
         ];
         $newChat = Chat::create($data);
-        return redirect()->route('chat');
+        return redirect('/forum');
     }
 
-    public function detail(Chat $detail) {
-        $data['result'] = Chat::find($detail);
-        $data['comments'] = Message::where('id_forum', $detail->id_chat)->get();
-        return view('chat.detail', $data);
-    }
+    // public function forum(Request $request) {
+    //     $data = [
+    //         'user' => $request->user,
+    //         'forum' => $request->forum,
+    //     ];
+    //     $newChat = Chat::create($data);
+    // }
+
+    // public function detail(Chat $detail) {
+    //     $data['result'] = Chat::find($detail);
+    //     $data['comments'] = Message::where('id_forum', $detail->id_chat)->get();
+    //     return view('chat.detail', $data);
+    // }
 
     public function message(Request $request) {
         $data = [
@@ -45,5 +47,6 @@ class ChatController extends Controller
             'message' => $request->message,
         ];
         $newMessage = Message::create($data);
+        return redirect('/forum');
     }
 }

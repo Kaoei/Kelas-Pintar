@@ -47,22 +47,23 @@
                     <div class="overflow-hidden">
                         <div class="flex chat-container gap-x-4">
                             <!-- Chat Box -->
+                            @foreach ($result as $d)
                             <div class="chatbox bg-[#F6F6F6] flex flex-col p-5 gap-5 w-72 rounded-xl border border-[#ABABAB]">
                                 <div class="user flex items-center gap-2">
                                     <div class="photoProfile">
                                         <img src="{{ asset('img/user.jpg') }}" class="rounded-full w-8" alt="">
                                     </div>
                                     <div class="name">
-                                        <h1>John Doe</h1>
+                                        <h1>{{$d->user}}</h1>
                                     </div>
                                 </div>
                                 <div class="msg">
                                     <div class="msgContent text-sm">
-                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.</p>
+                                        <p>{{$d->forum}}</p>
                                     </div>
                                 </div>
                             </div>
-
+                            @endforeach
 
                         </div>
                     </div>
@@ -77,9 +78,12 @@
                         <img src="{{ asset('img/user.jpg') }}" class="rounded-full w-10" alt="">
                     </div>
                     <div class="inputform">
-                        <form action="" class="flex gap-3">
-                            <input type="text" placeholder="Tulis pertanyaanmu disini" class="w-[16rem] md:w-[55rem] p-2 rounded-xl border-[#ababab] border">
-                            <button class="text-[#4747F3] text-2xl md:text-3xl">
+                        <form action="{{ route('createChat') }}" method="POST" class="flex gap-3">
+                            @csrf
+                            @method('POST')
+                            <input type="hidden" name="user" value="{{$user->nama}}">
+                            <input type="text" placeholder="Tulis pertanyaanmu disini" class="w-[16rem] md:w-[55rem] p-2 rounded-xl border-[#ababab] border" name="forum">
+                            <button type="submit" class="text-[#4747F3] text-2xl md:text-3xl">
                                 <i class="fa-solid fa-paper-plane"></i>
                             </button>
                         </form>
@@ -89,6 +93,7 @@
             </div>
 
             <!-- Forum Chat -->
+            @foreach ($result as $d)
             <div class="forumChat bg-[#f6f6f6] flex flex-col p-5 gap-5 rounded-2xl mt-10 mb-10">
                 <!-- Forum Chat Content -->
                 <div class="border-b-2 border-[#ababab]">
@@ -97,18 +102,46 @@
                             <img src="{{ asset('img/user.jpg') }}" class="rounded-full w-8" alt="">
                         </div>
                         <div class="username">
-                            <h1>John Doe</h1>
+                            <h1>{{$d->user}}</h1>
                         </div>
                         <div class="time text-[#ababab]">
-                            <small>12.00 am</small>
+                            <small>{{$d->created_at}}</small>
                         </div>
                     </div>
                     <div class="msgContent p-5">
                         <p>
-                            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sequi voluptas quod consequuntur, iste assumenda impedit obcaecati
+                            {{$d->forum}}
                         </p>
                     </div>
                 </div>
+
+                <!-- Replies -->
+                @if(isset($comments[$d->id_chat]))
+                @foreach ($comments[$d->id_chat] as $m)
+                <div class="flex gap-5">
+                    <div class="pp">
+                        <img src="{{ asset('img/user.jpg') }}" class="rounded-full w-8" alt="">
+                    </div>
+                    
+                    <div>
+                        <div class="flex gap-5">
+                            <div class="username">
+                                <h1>{{$m->user}}</h1>
+                            </div>
+                            <div class="time text-[#ababab]">
+                                <small>{{$m->created_at}}</small>
+                            </div>
+                        </div>
+
+                        <div class="msgContent pt-1">
+                            <p>
+                                {{$m->message}}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                @endforeach
+                @endif
 
                 <!-- Comments Section -->
                 <div class="comments flex items-center gap-5 p-3">
@@ -118,9 +151,13 @@
                         </div>
                     </div>
                     <div class="inputform">
-                        <form action="" class="flex gap-3 items-center">
-                            <input type="text" placeholder="Komentar" class="w-[15rem]  md:w-[55rem] p-2 rounded-xl border-[#ababab] border">
-                            <button class="text-[#4747F3] text-xl absolute right-16">
+                        <form action="{{ route('message') }}" method="POST" class="flex gap-3 items-center">
+                            @csrf
+                            @method('POST')
+                            <input type="hidden" name="id_forum" value="{{$d->id_chat}}">
+                            <input type="hidden" name="user" value="{{$user->nama}}">
+                            <input type="text" placeholder="Komentar" class="w-[15rem]  md:w-[55rem] p-2 rounded-xl border-[#ababab] border" name="message">
+                            <button type="submit" class="text-[#4747F3] text-xl absolute right-16">
                                 <i class="fa-solid fa-paper-plane"></i>
                             </button>
                         </form>
@@ -129,6 +166,7 @@
                 
                 <a href="" class="text-center text-sm text-[#4747F3]">Lihat Semua Komentar</a>
             </div>
+            @endforeach
         </div>
     </div>
 

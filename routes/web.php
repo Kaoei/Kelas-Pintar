@@ -11,6 +11,8 @@ use App\Http\Controllers\tugasController;
 use App\Models\Kelas;
 use App\Models\Tugas;
 use App\Models\User;
+use App\Models\Chat;
+use App\Models\Message;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -48,7 +50,10 @@ Route::middleware(['guest'])->group(function(){
 Route::middleware(['auth'])->group(function(){
     Route::resource('/murid', KelasController::class);
     Route::get('/forum', function () {
-        return view('forum.forumPage');
+        $data['user'] = Auth::user();
+        $data['result'] = Chat::all();
+        $data['comments'] = Message::all()->groupBy('id_forum');
+        return view('forum.forumPage', $data);
     });
     Route::post('/logout', [AuthController::class, 'logout']);
     Route::resource('/kelas', KelasController::class);
@@ -59,9 +64,9 @@ Route::resource('/profile', datasiswaController::class);
 
 });
 // Route::get('/chat', [ChatController::class, 'index'])->name('chat');
-// Route::get('/chat/create', [ChatController::class, 'create'])->name('createChat');
-Route::post('/chat', [ChatController::class, 'action'])->name('actionChat'); // buat post
+Route::post('/chat/create', [ChatController::class, 'create'])->name('createChat'); // buat post forum
+// Route::post('/chat', [ChatController::class, 'forum'])->name('action'); 
 Route::get('/chat/detail/{detail}', [ChatController::class, 'detail'])->name('detailChat');
 // Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
 // Route::post('/profile', [ProfileController::class, 'action'])->name('');
-Route::post('/chat', [ChatController::class, 'message'])->name('message');
+Route::post('/chat', [ChatController::class, 'message'])->name('message'); // buat post message
