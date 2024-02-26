@@ -82,6 +82,7 @@ Route::post('/forum', [ChatController::class, 'highlights'])->name('highlights')
 Route::get('/qr/{data}', [QrController::class, 'generate'])->name('qrGenerate');
 Route::get('/qr/validate/{data}', [QrController::class, 'validateNISN'])->name('qrValidate');
 Route::get('/qr/view/{data}', [QrController::class, 'view'])->name('qrView');
+Route::get('/camera', [QrController::class, 'scan'])->name('qrCamera');
 
 // Rapot Route
 Route::get('/rapot', function () {

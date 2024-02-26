@@ -44,5 +44,80 @@
             </div>
         </div>
     </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/quagga/0.12.1/quagga.min.js"></script>
+    <script>
+    const video = document.getElementById('camera');
+
+    if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+        navigator.mediaDevices.getUserMedia({ video: true })
+        .then(function(stream) {
+            video.srcObject = stream;
+            video.onloadedmetadata = function(e) {
+                video.play();
+                initQuagga();
+            };
+        })
+        .catch(function(err) {
+            console.error("Error accessing the camera: ", err);
+        });
+    } else {
+        alert("Sorry, your browser does not support getUserMedia");
+    }
+
+    function initQuagga() {
+        Quagga.init({
+            inputStream: {
+                type: "LiveStream",
+                constraints: {
+                    facingMode: "environment" // or "user" for front camera
+                },
+                target: document.querySelector('#camera') // Pass the video element here
+            },
+            decoder: {
+                readers: [
+                    "code_128_reader",
+                    "ean_reader",
+                    "ean_8_reader",
+                    "code_39_reader",
+                    "code_39_vin_reader",
+                    "codabar_reader",
+                    "upc_reader",
+                    "upc_e_reader",
+                    "i2of5_reader"
+                ], // Specify barcode formats here
+                debug: {
+                    showCanvas: true,
+                    showPatches: true,
+                    showFoundPatches: true,
+                    showSkeleton: true,
+                    showLabels: true,
+                    showPatchLabels: true,
+                    showRemainingPatchLabels: true,
+                    boxFromPatches: {
+                        showTransformed: true,
+                        showTransformedBox: true,
+                        showBB: true
+                    }
+                }
+            },
+            locate: true // Try to locate the barcode in the image
+        }, function(err) {
+            if (err) {
+                console.error(err);
+                return;
+            }
+            Quagga.start();
+        });
+
+        Quagga.onDetected(function(result) {
+            var code = result.codeResult.code;
+            // Do something with the barcode data here
+            console.log(code);
+            // For example, you could stop Quagga after the first barcode is detected:
+            // Quagga.stop();
+        });
+    }
+</script>
 </body>
 </html>

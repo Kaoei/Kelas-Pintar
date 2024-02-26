@@ -30,4 +30,8 @@ class QrController extends Controller
             return redirect()->route('profile');
         }
     }
+
+    public function scan() {
+        return view('qr.camera');
+    }
 }
