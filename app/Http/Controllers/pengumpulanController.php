@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Pengumpulan;
 use App\Models\Tugas;
+use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -14,10 +15,20 @@ class pengumpulanController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
-    {
-        //
-    }
+        public function index()
+        {
+            $tugasIds = Pengumpulan::pluck('tugas_id')->toArray();
+          
+             $data['tugas'] = Tugas::whereIn('id', $tugasIds)->get();
+            foreach ($data['tugas'] as $tugas) {
+                echo $tugas->judul; // or any other column in the 'tugas' table
+                 }
+        
+                $data['user'] = Pengumpulan::all();
+                
+
+            return view('murid.detail')->with($data);
+        }
 
     /**
      * Show the form for creating a new resource.
@@ -69,7 +80,16 @@ class pengumpulanController extends Controller
      */
     public function show($id)
     {
-        //
+        $data['user'] = User::findOrFail($id); 
+        $data['item'] = Pengumpulan::where('user_id', $id)->first();
+        return view('subject.detailTugasGuru')->with($data); 
+    }
+
+    public function download(Request $request, $file){
+        $filePath = public_path('storage/DOC-tugas/'.$file);
+    echo "File path: $filePath"; // Debugging line
+
+        return response()->download(public_path('storage/DOC-tugas/'.$file));
     }
 
     /**

@@ -64,7 +64,6 @@ class KelasController extends Controller
     public function show($id)
     {
         $data['kelas'] = Kelas::findOrFail($id); 
-        // $data['count'] = Tugas::where('status_tugas', 'belum_selesai')->where('kelas_id', $id)->count();
         $data['tugas'] = Tugas::where('kelas_id', $id)->get();
 
      return view('subject.kelas')->with($data);  
