@@ -49,6 +49,22 @@
                 </form>
             </div>
 
+            <div class="Menu flex gap-3 flex-col">
+                <div class="text">
+                    <h1 class="font-bold text-base md:text-xl">Menu :</h1>
+                </div>
+                <div action="" class="flex gap-2">
+                    <a class="bg-[#4747F3] text-white font-medium text-sm md:text-[13px] p-2.5 flex gap-3 rounded-md w-24 md:w-32">
+                        <span class="text-white"><i class="fa-solid fa-chalkboard-user"></i></span>
+                        Buat kelas
+                    </a>
+                    <a class="bg-[#4747F3] text-white font-medium text-sm md:text-[13px] p-2.5 flex gap-3 rounded-md w-24 md:w-32">
+                        <span class="text-white"><i class="fa-solid fa-list"></i></span>
+                        List tugas
+                    </a>
+                </div>
+            </div>
+
             <div class="pelajaran gap-3 flex flex-col">
 
                 <div class="title">
@@ -70,7 +86,7 @@
                                     <h1 class="font-bold text-xs md:text-md">{{ $item->nama_kelas }}</h1>
                                     <h1 class="font-medium text-[9px] md:text-xs">{{ auth()->user()->role === 'guru' ? $item->kelas  : $item->user->nama }}</h1>
                                 </div>
-                                <h1 class="font-medium text-[8px] md:text-sm"><span><i class="fa-solid fa-clock"></i></span> Jam {{ $item->mulai_pembelajaran }} - {{ $item->berakhir }}</h1>
+                                <h1 class="font-medium text-[8px] md:text-[10px]"><span><i class="fa-solid fa-clock"></i></span> Jam {{ $item->mulai_pembelajaran }} - {{ $item->berakhir }}</h1>
                                 <form action="" class="flex justify-center mt-2">
                                     <a href="/tugas/{{ $item->id }}" class="bg-[#4747F3] text-white font-medium text-[9px] md:text-sm items-center justify-center p-1 md:p-1.5 flex gap-3 rounded-sm w-32" >
                                         Masuk

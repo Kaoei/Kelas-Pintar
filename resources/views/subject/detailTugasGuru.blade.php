@@ -74,13 +74,13 @@
             </div>
 
             <!-- Modal -->
-            <div id="modal" class=" fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex justify-center items-center">
+            <div id="modal" class="hidden fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex justify-center items-center">
                 <div class="bg-white p-8 rounded-lg">
                     <h2 class="text-xl font-bold mb-4">Input Nilai</h2>
                     <form>
                         <div class="mb-4">
                             <label for="nilai" class="block text-gray-700">Nilai:</label>
-                            <input type="number" id="nilai" name="nilai" class="rounded-md border-gray-300 px-4 py-2 w-full border border-[#ABABAB]" required>
+                            <input type="number" id="nilai" name="nilai" class="rounded-md  px-4 py-2 w-full border border-[#ABABAB]" required>
                         </div>
                         <div class="flex justify-end">
                             <button id="submitNilaiButton" class="bg-[#4747F3] text-white px-4 py-2 rounded-md">Submit</button>
@@ -92,26 +92,8 @@
         </div>
     </div>
 
-    <script>
-        const nilaiButton = document.getElementById('nilaiButton');
-        const modal = document.getElementById('modal');
-        const cancelButton = document.getElementById('cancelButton');
-        const submitNilaiButton = document.getElementById('submitNilaiButton');
-        const nilaiForm = document.getElementById('nilaiForm');
-
-        nilaiButton.addEventListener('click', () => {
-            modal.classList.remove('hidden');
-        });
-
-        cancelButton.addEventListener('click', () => {
-            modal.classList.add('hidden');
-        });
-
-        submitNilaiButton.addEventListener('click', () => {
-            modal.classList.add('hidden');
-            nilaiForm.submit(); 
-        });
-    </script>
+    <script src="{{ asset('js/modal.js') }}"></script>
+    
 
     @vite('resources/js/app.js')
 
