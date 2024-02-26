@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Nilai;
+use App\Models\Pengumpulan;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class nilaiController extends Controller
@@ -28,15 +30,23 @@ class nilaiController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = [
+            'user_id' => $request->user_id,
+            'tugas_id' => $request->tugas_id,
+            'pengumpulans_id' => $request->pengumpulans_id,
+            'nilai' => $request->nilai
+        ];
+        Nilai::create($data);
+        return redirect('/pengumpulan/'.$request->tugas_id);
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Nilai $nilai)
-    {
-        //
+    public function show($id)
+    {  
+        
+        // return view('subject.detailTugasGuru')->with($data);
     }
 
     /**

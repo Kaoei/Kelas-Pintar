@@ -32,20 +32,20 @@
                             </div>
                             
                         <div class="subject">
-                            <h1 class="font-bold text-3xl">MATEMATIKA KELAS A</h1>
-                            <p class="font-medium">Nama tugas</p>
+                            <h1 class="font-bold text-3xl">{{ $item->tugas->kelas->nama_kelas }}</h1>
+                            <p class="font-medium">{{ $item->tugas->kelas->subJudul }}</p>
                         </div>
                         <div class="tugas">
-                            <h1 class="font-semibold text-xl">Nama tugas</h1>
+                            <h1 class="font-semibold text-xl">{{ $item->tugas->nama_tugas }}</h1>
                         </div>
                     </div>
 
                     <div class="tenggat absolute flex text-[10px] md:text-sm items-center gap-4 md:ml-[53rem] md:-mt-16 -mt-12 ml-[14rem]">
-                        <h1 class="">Tenggat Waktu : 16/06/23</h1>
+                        <h1 class="">Tenggat Waktu : {{ $item->tugas->tenggat_waktu }}</h1>
                     </div>
 
                     <div class="container-pesan py-5 text-sm">
-                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fuga officia at, amet nulla sapiente dolores nesciunt dignissimos voluptatum quidem expedita, ut et quod nam hic nemo alias cupiditate numquam doloribus.</p>
+                        <p>{{ $item->tugas->dskripsi_tugas }}</p>
                     </div>
                 </div>
 
@@ -57,18 +57,21 @@
                             <p>Status</p>
                             <p class="text-green-500">Sudah dikumpulkan</p>
                         </div>
-                        <form id="nilaiForm" class="formsubmit flex flex-col justify-center">
+                        <div id="nilaiForm" class="formsubmit flex flex-col justify-center">
                             <div class="mb-3">
                                 <div class="w-full">
-                                    <input type="file" id="file" name="" class="text-white " style="display: none;">
-                                    <label for="file" class="text-[#4747f3] bg-white border w-full border-[#ABABAB] cursor-pointer font-bold rounded-xl p-2 flex gap-5 items-center">
-                                        <span class="text-xl"><i class="fa-solid fa-arrow-up-from-bracket"></i></span> Upload Tugas</label>
+                                    @if (is_string($item->file) && in_array(pathinfo($item->file, PATHINFO_EXTENSION), ['png', 'jpg', 'jpeg']))
+                                    <img src="{{ asset('storage/Image-tugas/' . $item->file) }}" class="w-20" alt="">
+                                    @else
+                                   <sp class="btn bg-white">Download : <a href="{{url('/pengumpulans/'.$item->file)}}">Document</a></sp>
+
+                                @endif
                                 </div>
                             </div>
                             <div class="btn flex justify-center">
                                 <button id="nilaiButton" type="button" class="bg-white text-[#4747F3] font-medium p-2 rounded-md w-full">Nilai</button>
                             </div>
-                        </form>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -77,10 +80,18 @@
             <div id="modal" class="hidden fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex justify-center items-center">
                 <div class="bg-white p-8 rounded-lg">
                     <h2 class="text-xl font-bold mb-4">Input Nilai</h2>
-                    <form>
+                    <form action="/nilai" method="POST">
+                        @csrf
                         <div class="mb-4">
                             <label for="nilai" class="block text-gray-700">Nilai:</label>
+<<<<<<< HEAD
                             <input type="number" id="nilai" name="nilai" class="rounded-md  px-4 py-2 w-full border border-[#ABABAB]" required>
+=======
+                            <input type="hidden" name="user_id" value="{{ $item->user->id }}">
+                            <input type="hidden" name="tugas_id" value="{{ $item->tugas->id }}">
+                            <input type="hidden" name="pengumpulans_id" value="{{ $item->id }}">
+                            <input type="number" id="nilai" name="nilai" class="rounded-md border-gray-300 px-4 py-2 w-full border border-[#ABABAB]" required>
+>>>>>>> 42f31f06e40381be2a6e5ac5af6d29445d267bcf
                         </div>
                         <div class="flex justify-end">
                             <button id="submitNilaiButton" class="bg-[#4747F3] text-white px-4 py-2 rounded-md">Submit</button>

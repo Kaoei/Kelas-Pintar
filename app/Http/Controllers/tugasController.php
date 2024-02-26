@@ -50,7 +50,7 @@ class tugasController extends Controller
     {
         $user_id = Auth::id();
         $data['tugas'] = Tugas::findOrFail($id); 
-        $data['cek'] = Pengumpulan::where('user_id', $user_id)->count();
+        $data['cek'] = Pengumpulan::where('tugas_id', $id)->count();
         $data['time'] = Carbon::now("Asia/Jakarta")->toDateTimeString();
         return view('subject.detailTugas')->with($data);    
 

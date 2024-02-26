@@ -88,7 +88,7 @@
                                 </div>
                                 <h1 class="font-medium text-[8px] md:text-[10px]"><span><i class="fa-solid fa-clock"></i></span> Jam {{ $item->mulai_pembelajaran }} - {{ $item->berakhir }}</h1>
                                 <form action="" class="flex justify-center mt-2">
-                                    <a href="/tugas/{{ $item->id }}" class="bg-[#4747F3] text-white font-medium text-[9px] md:text-sm items-center justify-center p-1 md:p-1.5 flex gap-3 rounded-sm w-32" >
+                                    <a href="/kelas/{{ $item->id }}" class="bg-[#4747F3] text-white font-medium text-[9px] md:text-sm items-center justify-center p-1 md:p-1.5 flex gap-3 rounded-sm w-32" >
                                         Masuk
                                     </a>
                                 </form>
@@ -126,7 +126,7 @@
                                 </div>
                                 <h1 class="font-medium text-[8px] md:text-sm"><span><i class="fa-solid fa-clock"></i></span> Jam  {{ $kelas->mulai_pembelajaran }} - {{ $kelas->berakhir }}</h1>
                                 <form action="" class="flex justify-center mt-2">
-                                    <a href="/kelas/{{ $kelas->id }}" class="bg-[#4747F3] text-white font-medium text-[9px] md:text-sm items-center justify-center p-1 md:p-1.5 flex gap-3 rounded-sm w-32">
+                                    <a href="/kelas/{{ $kelas->id}}" class="bg-[#4747F3] text-white font-medium text-[9px] md:text-sm items-center justify-center p-1 md:p-1.5 flex gap-3 rounded-sm w-32">
                                         Masuk
                                     </a>
                                 </form>

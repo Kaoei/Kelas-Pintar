@@ -58,22 +58,7 @@
                             <p>Nilai : 0/100</p>
                         </div>
                         @if (auth()->user()->role === 'murid')
-                        <form action="/pengumpulan" method="POST" enctype="multipart/form-data" class="formsubmit flex flex-col justify-center">
-                            @csrf
-                            <div class="mb-3">
-                                <div class="w-full">
-                                    <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
-                                    <input type="hidden" name="tugas_id" value="{{ $tugas->id }}">
-                                    <input type="file" id="file" name="file" class="text-white " style="display: none;">
-                                    <input type="hidden" name="status_pengumpulan" value="{{  $time > $tugas->tenggat_waktu ? 'tidak_tepat_waktu' : 'tepat_waktu'}}">
-                                    <label for="file" class="text-[#4747f3] bg-white border w-full border-[#ABABAB] cursor-pointer font-bold rounded-xl p-2 flex gap-5 items-center">
-                                        <span class="text-xl"><i class="fa-solid fa-arrow-up-from-bracket"></i></span> Upload Tugas</label>
-                                </div>
-                            </div>
-                            <div class="btn flex justify-center">
-                                <button class="bg-white text-[#4747F3] font-medium p-2 rounded-md w-full">Submit</button>
-                            </div>
-                        </form>
+                       
                         @if ($cek > 0)
                         <div class="mb-3">
                             <div class="w-full">
@@ -90,6 +75,22 @@
                             </div>
                         </form>
                         @else
+                        <form action="/pengumpulan" method="POST" enctype="multipart/form-data" class="formsubmit flex flex-col justify-center">
+                            @csrf
+                            <div class="mb-3">
+                                <div class="w-full">
+                                    <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
+                                    <input type="hidden" name="tugas_id" value="{{ $tugas->id }}">
+                                    <input type="file" id="file" name="file" class="text-white " style="display: none;">
+                                    <input type="hidden" name="status_pengumpulan" value="{{  $time > $tugas->tenggat_waktu ? 'tidak_tepat_waktu' : 'tepat_waktu'}}">
+                                    <label for="file" class="text-[#4747f3] bg-white border w-full border-[#ABABAB] cursor-pointer font-bold rounded-xl p-2 flex gap-5 items-center">
+                                        <span class="text-xl"><i class="fa-solid fa-arrow-up-from-bracket"></i></span> Upload Tugas</label>
+                                </div>
+                            </div>
+                            <div class="btn flex justify-center">
+                                <button class="bg-white text-[#4747F3] font-medium p-2 rounded-md w-full">Submit</button>
+                            </div>
+                        </form>
                         @endif
                         @else
                         <div class="mb-3">
